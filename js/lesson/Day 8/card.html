@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <script>
+        const container = document.createElement('div');
+        container.className='list';
+        
+        for (let i = 0; i < 12;i++) {
+            const card = document.createElement('div');
+            card.className = 'card col-1 m-2';
+            card.style.alignContent = 'center';
+            card.style.display = 'flex';
+            const cardc = document.createElement('p')
+            cardc.className = 'cardContent';
+            cardc.style.display = 'flex';
+            cardc.style.justifyContent = 'center';
+            cardc.style.textAlign = 'center';
+            cardc.innerHTML = `card${i}`;
+            card.appendChild(cardc);
+            container.appendChild(card);
+
+        }
+ 
+        
+        
+        document.body.appendChild(container);
+
+    </script>
+</body>
+</html>
+<!-- 
+<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s
+            content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div> -->

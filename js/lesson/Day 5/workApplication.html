@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Job Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        .experience {
+            margin-bottom: 10px;
+        }
+
+        .experience input {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Job Application Form</h1>
+    <form id="applicationForm">
+        <label for="fullName">Full Name:</label><br />
+        <input type="text" id="fullName" name="fullName" required><br /><br />
+
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" required><br /><br />
+
+        <label for="phone">Phone Number:</label><br />
+        <input type="tel" id="phone" name="phone" placeholder="e.g. +2519......" required><br /><br />
+
+        <h3>Work Experience</h3>
+        <div id="experienceContainer"></div>
+        <button type="button" onclick="addExperience()">Add Work Experience</button><br /><br />
+
+        <button type="submit">Submit Application</button>
+    </form>
+
+    <script>
+        function addExperience() {
+            const container = document.getElementById('experienceContainer');
+
+            const div = document.createElement('div');
+            div.classList.add('experience');
+
+            div.innerHTML = `
+        <input type="text" name="jobTitle[]" placeholder="Job Title" required />
+        <input type="text" name="companyName[]" placeholder="Company Name" required />
+        <input type="text" name="years[]" placeholder="Years Worked" required />
+        <button type="button" onclick="this.parentElement.remove()">Remove</button>
+      `;
+
+            container.appendChild(div);
+        }
+
+        document.getElementById('applicationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert("Application submitted!");
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <h1>Gussing Game</h1>
+
+
+    <h2>Guess a number between 1 and 10</h2>
+
+
+    <input type="number" id="guess" placeholder="Enter your guess">
+    <button onclick="submit()">Submit</button>
+    <p id="result"></p>
+
+</body>
+
+
+<script>
+    function submit() {
+    const emojis = ["😀", "😂", "😍", "🤔", "🥳", "😎", "😢", "😡", "👍", "🙏"];
+    const randomNumber = 9;
+    const guess = parseInt(document.getElementById('guess').value); 
+
+    const resultElement = document.getElementById('result');
+
+    if (guess < 0) {
+        resultElement.innerHTML = emojis[7] + " ቀልድ ነው የያዝከዉ";
+    } else if (guess > 10) {
+        resultElement.innerHTML = emojis[8] + " ተሳስተሀል";
+    } else if (guess === randomNumber) {
+        resultElement.innerHTML = emojis[5] + " በጣም አሪፍ አግኝተኸዋል";
+    } else {
+        resultElement.innerHTML = emojis[1] + " አይደለም፣ ደግመህ ፈትሽ!";
+    }
+}
+
+</script>
+
+</html>

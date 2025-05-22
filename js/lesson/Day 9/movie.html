@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+</head>
+
+<body>
+
+    <input type="text" id="movieInput" placeholder="Enter movie name">
+    <button id="searchButton">Search</button>
+    <div id="movieDetails"></div>
+    <div id="loading" style="display: none;">Loading...</div>
+    <div id="errorMessage" style="color: red; display: none;"></div>
+
+    <script>
+        let searchButton = document.getElementById('searchButton');
+        let loading = document.getElementById('loading');
+        let errorMessage = document.getElementById('errorMessage');
+
+        searchButton.addEventListener('click', function () {
+            let movieName = document.getElementById('movieInput').value;
+
+            // Check if movie name is empty
+            if (!movieName) {
+                errorMessage.textContent = "Please enter a movie name.";
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            errorMessage.style.display = "none";
+            loading.style.display = "block";
+
+            let url = `http://www.omdbapi.com/?t=${movieName}&apikey=a58b750a`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    loading.style.display = "none";
+                    if (data.Response === "True") {
+                        const movieDetails = document.getElementById('movieDetails')
+                        const title= document.createElement('h2');
+                            title.innerHTML = `${data.Title} , ${data.Year}`
+                            movieDetails.appendChild(title);
+                        const description = document.createElement('p');
+                            description.innerHTML = `Plot: ${data.Plot}`;
+                            movieDetails.appendChild(description);
+                        const img = document.createElement('img')
+                            img.src=`${data.Poster}`;
+                            movieDetails.appendChild(img);
+                    } else {
+                        errorMessage.textContent = "Movie not found. Please try another name.";
+                        errorMessage.style.display = "block";
+                        document.getElementById('movieDetails').innerHTML = '';
+                    }
+                })
+        });
+    </script>
+
+</body>
+
+</html>

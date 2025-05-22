@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            color: #444;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            padding: 10px;
+            margin: 5px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .positive {
+            color: green;
+            font-weight: bold;
+        }
+
+        .negative {
+            color: red;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 8px;
+            background: white;
+            margin-bottom: 5px;
+            border-left: 5px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Expense Tracker</h1>
+
+    <div>
+        <label>
+            Description:
+            <input type="text" id="desc" placeholder="e.g. Salary or Rent">
+        </label><br>
+        <label>
+            Amount:
+            <input type="number" id="amount" placeholder="e.g. 500 or -200">
+        </label><br>
+        <button onclick="addTransaction()">Add Transaction</button>
+    </div>
+
+    <h2>Balance: <span id="balance" class="positive">$0.00</span></h2>
+
+    <h3>Transactions:</h3>
+    <ul id="transactions"></ul>
+
+    <script>
+        let transactions = [];
+
+        function addTransaction() {
+            const desc = document.getElementById("desc").value.trim();
+            const amountInput = document.getElementById("amount").value;
+            const amount = parseFloat(amountInput);
+
+            if (!desc || isNaN(amount)) {
+                alert("Please enter a valid description and amount.");
+                return;
+            }
+
+            const transaction = {
+                description: desc,
+                amount: amount
+            };
+
+            transactions.push(transaction);
+            updateUI();
+
+            // Clear input fields
+            document.getElementById("desc").value = "";
+            document.getElementById("amount").value = "";
+        }
+
+        function updateUI() {
+            const transactionList = document.getElementById("transactions");
+            const balanceDisplay = document.getElementById("balance");
+
+            transactionList.innerHTML = "";
+
+            let total = 0;
+
+            transactions.forEach(tx => {
+                const item = document.createElement("li");
+                item.textContent = `${tx.description}: $${tx.amount.toFixed(2)}`;
+                item.style.borderLeftColor = tx.amount >= 0 ? "green" : "red";
+                transactionList.appendChild(item);
+                total += tx.amount;
+            });
+
+            balanceDisplay.textContent = `$${total.toFixed(2)}`;
+            balanceDisplay.className = total >= 0 ? "positive" : "negative";
+        }
+    </script>
+
+</body>
+
+</html>

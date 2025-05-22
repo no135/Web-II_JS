@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ask username and ask salary then calculate tax 35%  after tax salary>35000 is legible for loan
+        function getusername(){
+            let username=prompt("enter your name");
+            return username;
+        }
+        function getsalary(){
+            let salary=prompt("enter your salary");
+            return salary;
+        }
+        function netsalary(salary){
+            
+            return(salary-(salary-salary*0.35));
+        }
+        function getaftertax(salary,tax){
+           
+            return netsalary;
+        }
+        function checkforloan(netsalary,username){
+            if(netsalary>35000){
+                console.log(username+", you are eligible for loan");
+            }else{
+                console.log(username+", you are not eligible for loan");
+            }
+        }
+        let username=getusername();
+        let salary=getsalary();
+        let tax=netsalary(salary);
+        checkforloan(tax,username);
+
+
+        
+
+    </script>
+
+</body>
+</html>

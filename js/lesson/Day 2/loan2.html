@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function getName() {
+            let name = prompt('What is your name?');
+            return name;
+        }
+
+        function getSalary() {
+            let salary = prompt('What is your salary?');
+            return salary;
+        }
+
+        function calculateNetSalary(salary, name) {
+            let netSalary = salary - (salary * 0.35);
+            return netSalary;
+        }
+
+        function checkLigiablity(netSalary) {
+            if (netSalary > 35000) {
+                console.log('You are eligible for tax');
+            } else {
+                console.log('You are not eligible for tax');
+            }
+        }
+
+        let netSalary = calculateNetSalary(getSalary(), getName());
+        checkLigiablity(netSalary)
+    </script>
+</body>
+
+</html>

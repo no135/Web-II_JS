@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main-div {
+            display: flex;
+        }
+
+        h4 {
+            margin: 20px;
+            border-style: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-div">
+
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+        <h4 style="border-style: solid; width: 30px; background-color: red;">box</h4>
+    </div>
+
+
+
+    <script>
+        const titles = document.querySelectorAll('h4')
+        titles.forEach((title, i) => {
+            title.style.fontSize = '20px' // all titles will have 24px font size
+            if (i % 2 === 0) {
+                title.style.backgroundColor = 'blue'
+            } else {
+                title.style.backgroundColor = 'red'
+            }
+        })
+    </script>
+</body>
+
+</html>

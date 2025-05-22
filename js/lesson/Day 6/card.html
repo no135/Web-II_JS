@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 200px);
+            grid-gap: 3em;
+            justify-content: center;
+        }
+
+
+        .grid-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 2fr 1fr;
+            grid-gap: 5px;
+            background-color: white;
+            color: black;
+            font-size: 1.5em;
+            padding: 10px;
+            border-radius: 5%;
+            box-shadow: 0px 5px 15px grey;
+        }
+
+
+        .heart {
+            text-align: center;
+            align-self: center;
+            font-size: 2em;
+            color: red;
+        }
+
+
+        .top-left {
+            padding: 0.1em;
+        }
+
+
+        .bottom-right {
+            align-self: end;
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align:center"> Playing Cards using CSS Grid</h1><br>
+
+
+    <div class="grid-container">
+        <div class="grid-item">
+            <div id="top" class="top-left">X<br>
+                <div style="color:red">♥</div>
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div class="heart">♥</div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div id="bottom" class="bottom-right">X<br>
+                <div style="color:red;">♥</div>
+            </div>
+        </div>
+
+
+        <div class="grid-item">
+            <div id="top1" class="top-right">x<br>
+                <div style="color:red;">♥</div>
+            </div>
+            <div class="heart">♥</div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div class="heart">♥</div>
+            <div id="bottom1" class="bottom-right">x<br>
+                <div style="color:red;">♥</div>
+            </div>
+        </div>
+
+
+    </div>
+    </div>
+
+
+    <div class="grid-container">
+
+        <button style="margin-top: 2em; " onclick="generate1()">Click</button>
+
+
+        <button style="margin-top: 2em;"onclick="generate2()">Click 2</button>
+    </div>
+    </div>
+
+
+    <script>
+        const topNumber = document.getElementById("top");
+        const bottomNumber = document.getElementById("bottom");
+        function generate1() {
+            const randomIndex = Math.floor(Math.random() * playingCards.length);
+            const randomCard = playingCards[randomIndex];
+            topNumber.innerHTML = randomCard
+            bottomNumber.innerHTML = randomCard;
+        }
+        const topNumber1 = document.getElementById("top1");
+        const bottomNumber1 = document.getElementById("bottom1");
+        function generate2() {
+                const randomIndex = Math.floor(Math.random() * playingCards.length);
+                const randomCard = playingCards[randomIndex];
+                topNumber1.innerHTML = randomCard
+                bottomNumber1.innerHTML = randomCard;
+            }
+        const playingCards = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+        function compete(num1, num2) {
+            if (num1 > num2) {
+                return "Player 1 wins!";
+            } else if (num1 < num2) {
+                return "Player 2 wins!";
+            } else {
+                return "It's a tie!";
+            }
+        }
+        
+        
+    </script>
+</body>
+
+</html>

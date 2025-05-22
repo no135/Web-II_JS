@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document Object Model</title>
+</head>
+
+<body>
+
+    <h1 class='title' id='first-title'>First Title</h1>
+    <h1 class='title' id='second-title'>Second Title</h1>
+    <h1 id='third-title'>Third Title</h1>
+    <h1></h1>
+
+    <script>
+        //console.log(document.getElementsByTagName('h1'));
+        //console.log(document.getElementsByClassName('title'));
+        console.log(document.getElementById('first-title'));
+        document.getElementById('third-title').className = 'newtitle';
+        const titles = document.querySelectorAll('h1');
+            titles[3].setAttribute('class', 'title');
+            titles[3].setAttribute('id', 'fourth-title')
+            titles[3].innerHTML = 'Fourth Title';
+        element1=document.createElement('h1');
+        element1.innerHTML='newTitle'
+        document.body.appendChild(element1);
+    </script>
+
+</body>
+
+</html>

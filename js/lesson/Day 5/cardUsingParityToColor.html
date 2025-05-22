@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card with Alternating Background Colors</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <!-- Card Container -->
+        <div id="card-container" class="row">
+            <!-- Cards will be added dynamically here -->
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and optional Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Function to create a card with a border and alternating colors
+        function createCard(index) {
+            const card = document.createElement('div');
+            card.classList.add('col-md-4', 'mb-4'); // Bootstrap columns
+            card.innerHTML = `
+        <div class="card border-1">
+          <div class="card-body">
+            <h5 class="card-title">Card ${index + 1}</h5>
+            <p class="card-text">This is card number ${index + 1}. It has a dynamic background color.</p>
+          </div>
+        </div>
+      `;
+
+            // Alternate background colors based on the index
+            if (index % 2 === 0) {
+                card.querySelector('.card').style.backgroundColor = '#f8d7da'; // Light Red
+            } else {
+                card.querySelector('.card').style.backgroundColor = '#d1ecf1'; // Light Blue
+            }
+
+            return card;
+        }
+
+        // Add multiple cards to the card container
+        const cardContainer = document.getElementById('card-container');
+        for (let i = 0; i < 6; i++) { // Example with 6 cards
+            const card = createCard(i);
+            cardContainer.appendChild(card);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>My First Page</h2>
+
+    <p id="demo">modify</p>
+
+
+    <button id="button" onclick="changeText()">submit</button>
+
+    <script>
+        function changeText() {
+            document.getElementById("demo").innerHTML = "Hello World!";
+            document.getElementById("demo").style.color = "red";
+            document.getElementById("demo").textContent = "hi";
+        }       
+        
+
+    </script>
+
+</body>
+
+</html>

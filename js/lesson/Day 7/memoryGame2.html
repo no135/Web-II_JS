@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Number Game</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
+
+  <style>
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      border: none;
+      margin-bottom: 30px;
+      box-shadow:
+        0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1),
+        0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1),
+        0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12),
+        0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
+    }
+
+    .l-bg-cherry {
+      background: linear-gradient(to right, #493240, #f09) !important;
+      color: #fff;
+    }
+
+    .card-title {
+      font-size: 1rem;
+    }
+
+    input.is-valid {
+      border-color: #198754 !important;
+    }
+
+    input.is-invalid {
+      border-color: #dc3545 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Memory Game</a>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container mt-5">
+    <div class="row" id="card_holder"></div>
+  </div>
+
+  <div class="container mb-4">
+    <button onclick="randomGenerate()" class="btn btn-primary me-2">Start Game</button>
+    <button onclick="checkAllInputs()" class="btn btn-success">Check Answers</button>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    let randomNumbers = [];
+    let numberElements = [];
+    let inputFields = [];
+
+    const initializeCards = () => {
+      const cardHolder = document.getElementById('card_holder');
+      cardHolder.innerHTML = '';
+      numberElements = [];
+      inputFields = [];
+
+      for (let i = 0; i < 6; i++) {
+        // Card
+        const card = document.createElement('div');
+        card.className = 'col-md-4 col-lg-2 mb-3';
+
+        const cardContent = document.createElement('div');
+        cardContent.className = 'card l-bg-cherry';
+
+        const cardBody = document.createElement('div');
+        cardBody.className = 'card-body text-center';
+
+        const title = document.createElement('h5');
+        title.className = 'card-title';
+        title.textContent = 'Number';
+
+        const number = document.createElement('h2');
+        number.id = 'number' + i;
+        number.textContent = '??';
+
+        numberElements.push(number);
+
+        cardBody.appendChild(title);
+        cardBody.appendChild(number);
+        cardContent.appendChild(cardBody);
+        card.appendChild(cardContent);
+
+        // Input
+        const inputCol = document.createElement('div');
+        inputCol.className = 'col-md-4 col-lg-2 mb-3';
+
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.className = 'form-control';
+        input.disabled = true;
+        input.placeholder = 'Enter number';
+
+        inputFields.push(input);
+        inputCol.appendChild(input);
+
+        cardHolder.appendChild(card);
+        cardHolder.appendChild(inputCol);
+      }
+    };
+
+    const randomGenerate = () => {
+      randomNumbers = [];
+
+      // Generate and show numbers
+      for (let i = 0; i < 6; i++) {
+        const rand = Math.floor(Math.random() * 30);
+        randomNumbers.push(rand);
+        numberElements[i].textContent = rand;
+        inputFields[i].disabled = true;
+        inputFields[i].value = '';
+        inputFields[i].classList.remove('is-valid', 'is-invalid');
+      }
+
+      // Hide numbers after 10 seconds and enable inputs
+      setTimeout(() => {
+        for (let i = 0; i < 6; i++) {
+          numberElements[i].textContent = '??';
+          inputFields[i].disabled = false;
+        }
+      }, 10000);
+    };
+
+    const checkAllInputs = () => {
+      for (let i = 0; i < 6; i++) {
+        const userInput = parseInt(inputFields[i].value);
+        if (userInput === randomNumbers[i]) {
+          inputFields[i].classList.add('is-valid');
+          inputFields[i].classList.remove('is-invalid');
+        } else {
+          inputFields[i].classList.add('is-invalid');
+          inputFields[i].classList.remove('is-valid');
+        }
+      }
+    };
+
+    window.onload = initializeCards;
+  </script>
+</body>
+
+</html>
